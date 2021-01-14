@@ -8,3 +8,8 @@ Hi, Ini adalah project notes untuk pelajar di SMK Rabbaanii
 * Ubah default root akses dari C:/xampp/htdoc/
 * Pindahkan ke D:/nativeapi/
 * Tulis article dari tahapan awal yang ada di vidio sampai menambahkan data tersebut. Lalu kirim ke email se.esemka@rbs.sch.id dengan subject judul diatas.
+
+### 14 Jan 2021 : Menambahkan Folder Module dan Config, Melakukan Testing Connection dan Menampilkan List Notes dari API kedalam Postman
+* Menambahkan file configurasi > connection.php
+* Menambahkan file list_notes berdasarkan akses user dan kategori
+* Tulis article dari tahapan awal yang ada di vidio sampai menambahkan data tersebut. Lalu kirim ke email se.esemka@rbs.sch.id dengan subject judul diatas.
