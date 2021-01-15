@@ -13,3 +13,5 @@ Hi, Ini adalah project notes untuk pelajar di SMK Rabbaanii
 * Menambahkan file configurasi > connection.php
 * Menambahkan file list_notes berdasarkan akses user dan kategori
 * Tulis article dari tahapan awal yang ada di vidio sampai menambahkan data tersebut. Lalu kirim ke email se.esemka@rbs.sch.id dengan subject judul diatas.
+
+### 15 Jan 2021 : Pendalaman Materi pembangunan API pada Pertemuan 14 Jan 2021
