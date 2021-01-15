@@ -15,6 +15,6 @@ Hi, Ini adalah project notes untuk pelajar di SMK Rabbaanii
 * Tulis article dari tahapan awal yang ada di vidio sampai menambahkan data tersebut. Lalu kirim ke email se.esemka@rbs.sch.id dengan subject judul diatas.
 
 ### 15 Jan 2021 : Pendalaman Materi pembangunan API pada Pertemuan 14 Jan 2021
-Berikut pendalaman materi dengan memahami alur proses aplikasi Notedpad yang sedang dalam pembangunan, pada tahapan ini kita fokus membangun dan mempersiapkan backend untuk nantinya digunakan di aplikasi client kita
+Berikut pendalaman materi dengan memahami alur proses aplikasi Notedpad yang sedang dalam pembangunan, pada tahapan ini kita fokus membangun dan mempersiapkan backend untuk nantinya digunakan di aplikasi client kita (Tag: 150121.2)
 
 <img src="https://github.com/eljitech/notepadinhand/blob/master/pictures/github/Screenshot%20from%202021-01-15%2010-39-55.png"/>
