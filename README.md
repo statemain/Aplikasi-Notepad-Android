@@ -24,6 +24,8 @@ Berikut pendalaman materi dengan memahami alur proses aplikasi Notedpad yang sed
 
 <img src="https://github.com/eljitech/notepadinhand/blob/master/pictures/github/Screenshot%20from%202021-01-18%2014-43-09.png"/>
 
+* <a href="https://github.com/eljitech/notepadinhand/blob/master/database/180121_db_notes.sql">Update database bisa diambil disini, silahkan export untuk testing dengan database terbaru ini</a>
+
 ### Rilis Update : Bisa di download di link berikut
 * <a href="https://github.com/eljitech/notepadinhand/releases/tag/150121.2">Pertemuan Terakhir 15 Januari 2021</a> : Update project Native API sudah dapat menampilkan output dari request yang diminta oleh client melalui Postman app. (<i>Unstable</i>)
 
