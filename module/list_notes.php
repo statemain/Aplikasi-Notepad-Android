@@ -25,8 +25,11 @@
         if ($execute_querylogin > 0) {
             $categoryof_notes = $_POST['categoryof_notes'];
 
+            // Deklarasi Query SQL
             $gettotal_notes = "SELECT COUNT(*) 'total' FROM tbl_notes WHERE categoryof_notes = '$categoryof_notes'";
+            // Eksekusi Query
             $execute_querytotalnotes = mysqli_query($_AUTH, $gettotal_notes);
+            // Ambil Data yang sudah di request tadi oleh query yang barusan dijalankan
             $result_totaldatanotes = mysqli_fetch_assoc($execute_querytotalnotes);
             // mysqli_fetch_assoc ini berfungsi untuk menfetching / mengambil data secara satu persatu
 
