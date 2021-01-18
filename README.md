@@ -19,7 +19,7 @@ Berikut pendalaman materi dengan memahami alur proses aplikasi Notedpad yang sed
 
 <img src="https://github.com/eljitech/notepadinhand/blob/master/pictures/github/Screenshot%20from%202021-01-15%2010-39-55.png"/>
 
-### 18 Jan 2021 : 
+### 18 Jan 2021 : Menambahkan Module Create Note dan Testing dengan Postman (Backend)
 * Menambahkan Module Create Note untuk backend PHP yang akan digunakan untuk jalur penghubung antara Client dan Server | <a href="https://github.com/eljitech/notepadinhand/releases/tag/180121.2">Check it</a>
 
 <img src="https://github.com/eljitech/notepadinhand/blob/master/pictures/github/Screenshot%20from%202021-01-18%2014-43-09.png"/>
