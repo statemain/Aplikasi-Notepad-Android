@@ -26,8 +26,13 @@ Berikut pendalaman materi dengan memahami alur proses aplikasi Notedpad yang sed
 
 * <a href="https://github.com/eljitech/notepadinhand/blob/master/database/180121_db_notes.sql">Update database bisa diambil disini, silahkan export untuk testing dengan database terbaru ini</a>
 
+### 19 Jan 2021 : Backend / Native API Aplikasi Notes (Stable Rilis)
+* Download Stable Rilis 190121.2 <a href="https://github.com/eljitech/notepadinhand/releases/tag/190121.2">Here</a>
+
 ### Rilis Update : Bisa di download di link berikut
 * <a href="https://github.com/eljitech/notepadinhand/releases/tag/150121.2">Pertemuan Terakhir 15 Januari 2021</a> : Update project Native API sudah dapat menampilkan output dari request yang diminta oleh client melalui Postman app. (<i>Unstable</i>)
+
+* <a href="https://github.com/eljitech/notepadinhand/releases/tag/190121.2">Stable Rilis Backend Aplikasi Notes</a> : Ready for develop with client apps. (<b>Stable Now, Download and install in your local server</b>)
 
 ### Documentation
 * <a href="https://github.com/eljitech/notepadinhand/wiki">Akses Dokumentasi Native API</a> <b>Available</b>
