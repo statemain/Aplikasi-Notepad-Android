@@ -1,6 +1,6 @@
 <?php
 
-    // Tag: 180121.2
+    // Tag: 190121.2
 
     include '../config/connection.php';
 
@@ -29,29 +29,28 @@
         $id_user_result = $getid_user['id_user'];
 
         if ($execute_querylogin > 0) {
-            // Berhasil login
-            $title_note = $_POST['titleof_notes'];
-            $content_note = $_POST['contentof_notes'];
-            $category_note = $_POST['categoryof_notes'];
+            // Login berhasil
+            $get_idnotes = $_POST['id_notes']; // 35
+            $set_title = $_POST['titleof_notes'];
+            $set_konten = $_POST['contentof_notes'];
+            $set_category = $_POST['categoryof_notes'];
 
-            $query_tambahnotes = "INSERT INTO tbl_notes (titleof_notes, contentof_notes, id_user, categoryof_notes) VALUES ('$title_note', '$content_note', $id_user_result, '$category_note')";
+            $query_updatenote = "UPDATE tbl_notes
+            SET titleof_notes = '$set_title', contentof_notes = '$set_konten', id_user = $id_user_result, categoryof_notes = '$set_category'
+            WHERE id_notes = $get_idnotes";
+            $execute_updatenote = mysqli_query($_AUTH, $query_updatenote);
 
-            if(mysqli_query($_AUTH, $query_tambahnotes)) {
-                $query_tampilkanlistdatanote = "SELECT * FROM tbl_notes ORDER BY id_notes ASC";
-                $execute_viewlistdatanote = mysqli_query($_AUTH, $query_tampilkanlistdatanote);
-
-                $query_totalnotes = "SELECT COUNT(*) 'total_keseluruhan_notes' FROM tbl_notes";
-                $execute_totalnotes = mysqli_query($_AUTH, $query_totalnotes);
-                $get_totalnotes = mysqli_fetch_assoc($execute_totalnotes);
+            if($execute_updatenote) {
+                $query_tampilkandatayangbarudiupdate = "SELECT * FROM tbl_notes WHERE id_notes = $get_idnotes";
+                $execute_tampilkandatalatestupdatenote = mysqli_query($_AUTH, $query_tampilkandatayangbarudiupdate);
 
                 // Untuk menampilkan informasi
-                $response['message'] = "Data notes berhasil ditambahkan kedalam database dan list berhasil ditampilkan";
+                $response['message'] = "Data notes dengan id $get_idnotes berhasil diupdate, dan list berhasil ditampilkan";
                 $response['code'] = 201;
                 $response['status'] = true;
-                $response['totalnotes'] = $get_totalnotes['total_keseluruhan_notes'];
-                $response['datanotes'] = array();
+                $response['dataupadated'] = array();
 
-                while($row = mysqli_fetch_array($execute_viewlistdatanote)) {
+                while($row = mysqli_fetch_array($execute_tampilkandatalatestupdatenote)) {
 
                     $data = array();
 
@@ -62,7 +61,7 @@
                     $data['id_user'] = $row['id_user'];
                     $data['categoryof_notes'] = $row['categoryof_notes'];
 
-                    array_push($response['datanotes'], $data);
+                    array_push($response['dataupadated'], $data);
                 }
 
                 echo json_encode($response);
@@ -75,7 +74,6 @@
             $response["status"] = false;
             echo json_encode($response);
         }
-
 
     } else {
         $response["message"] = trim("Oops! Sory, Request API ini membutuhkan parameter!.");

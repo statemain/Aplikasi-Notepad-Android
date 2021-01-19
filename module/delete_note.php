@@ -1,6 +1,6 @@
 <?php
 
-    // Tag: 180121.2
+    // Tag: 190121.2
 
     include '../config/connection.php';
 
@@ -27,55 +27,44 @@
         $getid_user = mysqli_fetch_assoc($execute_cariiduser);
 
         $id_user_result = $getid_user['id_user'];
-
+    
         if ($execute_querylogin > 0) {
             // Berhasil login
-            $title_note = $_POST['titleof_notes'];
-            $content_note = $_POST['contentof_notes'];
-            $category_note = $_POST['categoryof_notes'];
+            $get_idnotes = $_POST['id_notes']; 
 
-            $query_tambahnotes = "INSERT INTO tbl_notes (titleof_notes, contentof_notes, id_user, categoryof_notes) VALUES ('$title_note', '$content_note', $id_user_result, '$category_note')";
+            $query_mencaridatanotes = "SELECT COUNT(*) total_data FROM tbl_notes WHERE id_notes = $get_idnotes";
+            $execute_caridatanote = mysqli_query($_AUTH, $query_mencaridatanotes);
+            $get_ketersediaan_data = mysqli_fetch_assoc($execute_caridatanote);
 
-            if(mysqli_query($_AUTH, $query_tambahnotes)) {
-                $query_tampilkanlistdatanote = "SELECT * FROM tbl_notes ORDER BY id_notes ASC";
-                $execute_viewlistdatanote = mysqli_query($_AUTH, $query_tampilkanlistdatanote);
+            if($get_ketersediaan_data['total_data'] > 0) {
 
-                $query_totalnotes = "SELECT COUNT(*) 'total_keseluruhan_notes' FROM tbl_notes";
-                $execute_totalnotes = mysqli_query($_AUTH, $query_totalnotes);
-                $get_totalnotes = mysqli_fetch_assoc($execute_totalnotes);
+                $query_menghapusdatanote = "DELETE FROM tbl_notes WHERE id_notes = $get_idnotes";
+                $execute_penghapusandatanotes = mysqli_query($_AUTH, $query_menghapusdatanote);
 
                 // Untuk menampilkan informasi
-                $response['message'] = "Data notes berhasil ditambahkan kedalam database dan list berhasil ditampilkan";
+
+                $response['message'] = "Data notes dengan id $get_idnotes berhasil dihapus dari database";
                 $response['code'] = 201;
                 $response['status'] = true;
-                $response['totalnotes'] = $get_totalnotes['total_keseluruhan_notes'];
-                $response['datanotes'] = array();
 
-                while($row = mysqli_fetch_array($execute_viewlistdatanote)) {
+                echo json_encode($response);
+            } else {
 
-                    $data = array();
+                // Data tidak tersedia didatabase
 
-                    $data['id_notes'] = $row['id_notes'];
-                    $data['titleof_notes'] = $row['titleof_notes'];
-                    $data['contentof_notes'] = $row['contentof_notes'];
-                    $data['date_created'] = $row['date_created'];
-                    $data['id_user'] = $row['id_user'];
-                    $data['categoryof_notes'] = $row['categoryof_notes'];
-
-                    array_push($response['datanotes'], $data);
-                }
-
+                $response['message'] = "Data notes dengan id $get_idnotes gagal terhapus dari database, karna data tidak tersedia";
+                $response['code'] = 404;
+                $response['status'] = false;
                 echo json_encode($response);
             }
 
         } else {
-            // Login gagal
+            // Gagal login
             $response["message"] = trim("Autentikasi gagal, Cek kembali user credential anda.");
             $response["code"] = 401;
             $response["status"] = false;
             echo json_encode($response);
         }
-
 
     } else {
         $response["message"] = trim("Oops! Sory, Request API ini membutuhkan parameter!.");

@@ -60,6 +60,7 @@
                 while($row = mysqli_fetch_array($execute_querylistnotes)) {
                     $data = array();
 
+                    $data['id_notes'] = $row['id_notes'];
                     $data['titleof_notes'] = $row['titleof_notes'];
                     $data['contentof_notes'] = $row['contentof_notes'];
                     $data['date_created'] = $row['date_created'];
