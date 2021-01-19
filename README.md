@@ -27,6 +27,8 @@ Berikut pendalaman materi dengan memahami alur proses aplikasi Notedpad yang sed
 * <a href="https://github.com/eljitech/notepadinhand/blob/master/database/180121_db_notes.sql">Update database bisa diambil disini, silahkan export untuk testing dengan database terbaru ini</a>
 
 ### 19 Jan 2021 : Backend / Native API Aplikasi Notes (Stable Rilis)
+* Penambahan module Search, Update & Delete
+* Module CRUDS Sudah Selesai
 * Download Stable Rilis 190121.2 <a href="https://github.com/eljitech/notepadinhand/releases/tag/190121.2">Here</a>
 
 ### Rilis Update : Bisa di download di link berikut
