@@ -5,7 +5,7 @@
     $_SERVER_DB = "localhost";
     $_USERNAME_DB = "root";
     $_PASSWORD_DB = "!!&21adi";
-    $_DATABASE_DB = "db_notes";
+    $_DATABASE_DB = "db_notepadinhand";
 
     $_AUTH = mysqli_connect($_SERVER_DB, $_USERNAME_DB, $_PASSWORD_DB, $_DATABASE_DB);
 
