@@ -33,7 +33,7 @@
             $result_totaldatanotes = mysqli_fetch_assoc($execute_querytotalnotes);
             // mysqli_fetch_assoc ini berfungsi untuk menfetching / mengambil data secara satu persatu
 
-            $query_listnotes = "SELECT * FROM tbl_notes WHERE categoryof_notes = '$categoryof_notes' ORDER BY date_created ASC";
+            $query_listnotes = "SELECT tbl_notes.id_notes, tbl_notes.titleof_notes, tbl_notes.contentof_notes, tbl_notes.date_created, tbl_notes.id_user, tbl_user.username, tbl_notes.categoryof_notes FROM tbl_notes JOIN tbl_user ON tbl_user.id_user=tbl_notes.id_user WHERE categoryof_notes = '$categoryof_notes' ORDER BY date_created ASC;";
             $execute_querylistnotes = mysqli_query($_AUTH, $query_listnotes);
             
             if ($result_totaldatanotes['total'] == 0) {
@@ -65,6 +65,7 @@
                     $data['contentof_notes'] = $row['contentof_notes'];
                     $data['date_created'] = $row['date_created'];
                     $data['id_user'] = $row['id_user'];
+                    $data['username'] = $row['username'];
                     $data['categoryof_notes'] = $row['categoryof_notes'];
 
                     array_push($response['listnotes'], $data);
