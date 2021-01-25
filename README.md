@@ -39,3 +39,6 @@ Berikut pendalaman materi dengan memahami alur proses aplikasi Notedpad yang sed
 ### Documentation
 * <a href="https://github.com/eljitech/notepadinhand/wiki">Akses Dokumentasi Native API</a> <b>Available</b>
 * Dokumentasi Develop & Deployment Apps Android / Website <b>Unavailable</b>
+
+### Remote Status
+* This repo is collab with dir.ectsense account
