@@ -33,7 +33,7 @@
                 android:id="@+id/img_notes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_notes"/>
+                android:src="@drawable/ic_flag"/>
 
         </LinearLayout>
 

@@ -13,9 +13,11 @@ import java.util.List;
 
 import ei.eseptiyadi.notesapp.R;
 import ei.eseptiyadi.notesapp.model.listdatanotes.ListnotesItem;
-
+// Buat Extend
+// Alt + Enter
 public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.MyViewHolder> {
 
+    // Constructor
     Context context;
     List<ListnotesItem> listnotesItems;
 
@@ -44,6 +46,8 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.MyVi
         return listnotesItems.size();
     }
 
+    // Buat Class MyViewHolder dengan Extend > kalo ada error alt + enter buat constructor matching
+    // Not null (hapus)
     public class MyViewHolder extends RecyclerView.ViewHolder{
         ImageView picNotes;
         TextView txLabel, txDate;
