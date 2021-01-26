@@ -44,6 +44,10 @@ Berikut pendalaman materi dengan memahami alur proses aplikasi Notedpad yang sed
 
 <b>Ingat pesan saya, pakai metode ATM (Amati, tiru dan modifikasi), ikuti dulu step nya sampai program berjalan, apabila ada terdapat materi yang belum faham silahkan tanyakan.</b>
 
+### 26 Jan 2021 : Solve & Cover Problem
+* Implement to article
+* And report to Email
+
 ### Rilis Update : Bisa di download di link berikut
 * <a href="https://github.com/eljitech/notepadinhand/releases/tag/150121.2">Pertemuan Terakhir 15 Januari 2021</a> : Update project Native API sudah dapat menampilkan output dari request yang diminta oleh client melalui Postman app. (<i>Unstable</i>)
 
