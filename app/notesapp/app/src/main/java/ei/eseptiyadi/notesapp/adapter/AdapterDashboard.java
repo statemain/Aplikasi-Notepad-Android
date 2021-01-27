@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,6 +40,13 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.MyVi
         holder.txDate.setText(listnotesItems.get(position).getDateCreated()
                 + "  ॰  " + listnotesItems.get(position).getUsername()
                 + "  ॰  " + listnotesItems.get(position).getCategoryofNotes());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Item yang dipilih adalah " + listnotesItems.get(position).getTitleofNotes(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
