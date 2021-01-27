@@ -48,7 +48,12 @@ Berikut pendalaman materi dengan memahami alur proses aplikasi Notedpad yang sed
 * Implement to article
 * And report to Email
 
-Add
+### 27 Jan 2021 : Update Fiture list notes berdasarkan category notes To do dan Task
+* Menampilkan List Notes berdasarkan Kategori Task dan To do
+* Memahami konsep View pemanggilan layout dengan tag <include> di .XML
+* Mengambil Data dari API berdasarkan kategori List notes melalui API
+
+<img src="https://github.com/eljitech/notepadinhand/blob/master/pictures/github/Peek%202021-01-27%2019-46.gif"/>
 
 ### Rilis Update : Bisa di download di link berikut
 * <a href="https://github.com/eljitech/notepadinhand/releases/tag/150121.2">Pertemuan Terakhir 15 Januari 2021</a> : Update project Native API sudah dapat menampilkan output dari request yang diminta oleh client melalui Postman app. (<i>Unstable</i>)
