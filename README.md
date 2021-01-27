@@ -55,6 +55,8 @@ Berikut pendalaman materi dengan memahami alur proses aplikasi Notedpad yang sed
 
 <img src="https://github.com/eljitech/notepadinhand/blob/master/pictures/github/Peek%202021-01-27%2019-46.gif"/>
 
+Detail project bisa dilihat di sourcecode berikut <a href="https://github.com/eljitech/notepadinhand/tree/master/app/notesapp">Disini</a>
+
 ### Rilis Update : Bisa di download di link berikut
 * <a href="https://github.com/eljitech/notepadinhand/releases/tag/150121.2">Pertemuan Terakhir 15 Januari 2021</a> : Update project Native API sudah dapat menampilkan output dari request yang diminta oleh client melalui Postman app. (<i>Unstable</i>)
 
