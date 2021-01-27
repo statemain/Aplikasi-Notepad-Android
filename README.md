@@ -52,6 +52,7 @@ Berikut pendalaman materi dengan memahami alur proses aplikasi Notedpad yang sed
 * Menampilkan List Notes berdasarkan Kategori Task dan To do
 * Memahami konsep View pemanggilan layout dengan tag <include> di .XML
 * Mengambil Data dari API berdasarkan kategori List notes melalui API
+* Issue yang harus diselesaikan <a href="https://github.com/eljitech/attendance/issues/1">LIHAT DISINI</a>
 
 <img src="https://github.com/eljitech/notepadinhand/blob/master/pictures/github/Peek%202021-01-27%2019-46.gif"/>
 
