@@ -19,19 +19,19 @@
             <TextView
                 android:layout_weight="1"
                 android:layout_marginLeft="20dp"
-                android:id="@+id/txCategoryTodo"
+                android:id="@+id/txCategoryNotes"
                 android:textColor="#000"
                 android:textSize="6pt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="Kategori Todo"/>
+                android:text="Kategori Notes"/>
 
             <TextView
                 android:gravity="right"
                 android:layout_weight="1"
                 android:layout_marginRight="20dp"
-                android:id="@+id/txTotalDataTodo"
+                android:id="@+id/txTotalDataNotes"
                 android:textColor="#000"
                 android:textSize="6pt"
                 android:layout_width="match_parent"
@@ -45,7 +45,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:visibility="visible"
             android:layout_marginTop="10dp"
-            android:id="@+id/rv_listtodo"
+            android:id="@+id/rv_listnotes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
