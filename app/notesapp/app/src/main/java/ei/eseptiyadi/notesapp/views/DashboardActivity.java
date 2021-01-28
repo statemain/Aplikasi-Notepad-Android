@@ -50,11 +50,13 @@ public class DashboardActivity extends AppCompatActivity {
         String hashUser = "adminkantor";
         String levelUser = "Administrator";
 
+        // Meload data ketika lunching pertama apps
         updateList(userName, userKey, hashUser, levelUser);
 
         srvListNotes.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                // Meload ketika swipe refresh di laksanakan
                 updateList(userName, userKey, hashUser, levelUser);
             }
         });

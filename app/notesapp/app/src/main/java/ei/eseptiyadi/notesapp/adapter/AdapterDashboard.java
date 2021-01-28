@@ -41,6 +41,17 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.MyVi
                 + "  ॰  " + listnotesItems.get(position).getUsername()
                 + "  ॰  " + listnotesItems.get(position).getCategoryofNotes());
 
+        // Muncul adalah Notes -> icn_notes
+        String category = listnotesItems.get(position).getCategoryofNotes().toString();
+
+        if (category.equals("Notes")) {
+            holder.picNotes.setImageResource(R.drawable.icn_notes);
+        } else if (category.equals("Task")) {
+            holder.picNotes.setImageResource(R.drawable.icn_task);
+        } else if (category.equals("To do")) {
+            holder.picNotes.setImageResource(R.drawable.icn_todo);
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
