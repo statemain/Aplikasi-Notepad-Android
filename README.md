@@ -64,6 +64,15 @@ Detail project bisa dilihat di sourcecode berikut <a href="https://github.com/el
 
 Detail project bisa dilihat di sourcecode berikut <a href="https://github.com/eljitech/notepadinhand/commit/b81035a06f3d9cdc0a140c66c9eac9b6bafdabdb">Disini</a>
 
+### 01 Feb 2021 : Update module list todo, task dan notes, problem solving selesai
+* Problem : Ketika menambah data notes dengan kategori tertentu tidak me-ngupdate list : Clear
+* Problem : Ketika menghapus pun sama : Clear
+* Problem : Program Force close akibat data null, adapter menginformasikan jangan ada data kosong, kecuali terdapat handling di sourcecode : Clear
+
+Result bisa lihat dibawah ini, semua task problem sudah clear dan solve. Silahkan diselesaikan dulu, untuk register dan login akan di report sore hari. Terima kasih
+
+<img src="https://github.com/eljitech/notepadinhand/blob/master/pictures/github/Peek%202021-02-01%2014-56.gif"/>
+
 ### Rilis Update : Bisa di download di link berikut
 * <a href="https://github.com/eljitech/notepadinhand/releases/tag/150121.2">Pertemuan Terakhir 15 Januari 2021</a> : Update project Native API sudah dapat menampilkan output dari request yang diminta oleh client melalui Postman app. (<i>Unstable</i>)
 
