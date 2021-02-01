@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,9 @@ public class DashboardActivity extends AppCompatActivity {
     RecyclerView rvListTasks, rvListTodo, rvListNotes;
     SwipeRefreshLayout srvListNotes;
 
+    TextView infoNotFoundTodo;
+
+    String categoryOfNotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,9 @@ public class DashboardActivity extends AppCompatActivity {
         rvListTasks = (RecyclerView)findViewById(R.id.rv_listtask);
         rvListTodo = (RecyclerView)findViewById(R.id.rv_listtodo);
         rvListNotes = (RecyclerView)findViewById(R.id.rv_listnotes);
+
+        infoNotFoundTodo = (TextView) findViewById(R.id.notFoundTodo);
+
         srvListNotes = (SwipeRefreshLayout)findViewById(R.id.srlLoadList);
 
         rvListTasks.setHasFixedSize(true);
@@ -50,9 +57,6 @@ public class DashboardActivity extends AppCompatActivity {
         String hashUser = "adminkantor";
         String levelUser = "Administrator";
 
-        // Meload data ketika lunching pertama apps
-        updateList(userName, userKey, hashUser, levelUser);
-
         srvListNotes.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -61,21 +65,32 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+        loadNotes(userName, userKey, hashUser, levelUser);
+
+    }
+
+    public void loadNotes(String username, String password, String hash, String level) {
+        loadDataTask(username, password, hash, level);
+        loadDataNotes(username, password, hash, level);
+        loadDataTodos(username, password, hash, level);
     }
 
     public void updateList(String username, String password, String hash, String level) {
-        loadDataTask(username, password, hash, level, "Task");
-        loadDataNotes(username, password, hash, level, "Notes");
-        loadDataTodos(username, password, hash, level, "To do");
+        loadDataTask(username, password, hash, level);
+        loadDataNotes(username, password, hash, level);
+        loadDataTodos(username, password, hash, level);
     }
 
-    private void loadDataTodos(String userName, String userKey, String hashUser, String levelUser, String to_do) {
-        TextView totalDataTodo, titleTodo;
+    private void loadDataTodos(String userName, String userKey, String hashUser, String levelUser) {
+        categoryOfNotes = "To do";
+
+        TextView totalDataTodo, titleTodo, infoNotFoundDataTodo;
         totalDataTodo = (TextView)findViewById(R.id.txTotalDataTodo);
         titleTodo = (TextView)findViewById(R.id.txCategoryTodo);
+        infoNotFoundDataTodo = (TextView)findViewById(R.id.notFoundTodo);
 
         ApiServices apiServices = RetrofitClient.getInstance();
-        Call<ResponseListNotes> responseListNotesCall = apiServices.reqListNotes(userName, userKey, hashUser,levelUser, to_do);
+        Call<ResponseListNotes> responseListNotesCall = apiServices.reqListNotes(userName, userKey, hashUser,levelUser, categoryOfNotes);
 
         responseListNotesCall.enqueue(new Callback<ResponseListNotes>() {
             @Override
@@ -85,16 +100,25 @@ public class DashboardActivity extends AppCompatActivity {
                     totalDataTodo.setText(response.body().getTotalnotes() + " Total Item");
                     titleTodo.setText("Kategori " + response.body().getCategory());
 
-                    boolean status = response.body().isStatus();
                     List<ListnotesItem> notesItemList = response.body().getListnotes();
+                    AdapterDashboard adapterDashboard = new AdapterDashboard(DashboardActivity.this, notesItemList);
 
-                    if (status == true) {
-                        AdapterDashboard adapterDashboard = new AdapterDashboard(DashboardActivity.this, notesItemList);
+                    int totalDataCatatan = Integer.parseInt(response.body().getTotalnotes().toString());
+
+                    if (totalDataCatatan == 0) {
+                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        infoNotFoundDataTodo.setVisibility(View.VISIBLE);
+                        infoNotFoundDataTodo.setText(response.body().getMessage());
+                        srvListNotes.setRefreshing(false);
+                        rvListTodo.setVisibility(View.GONE);
+                    } else if (totalDataCatatan >= 0) {
+                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        infoNotFoundDataTodo.setVisibility(View.GONE);
+                        rvListTodo.setVisibility(View.VISIBLE);
                         rvListTodo.setAdapter(adapterDashboard);
                         srvListNotes.setRefreshing(false);
-                    } else {
-                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
+
                 } else {
                     Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -102,19 +126,22 @@ public class DashboardActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseListNotes> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
     }
 
-    private void loadDataNotes(String userName, String userKey, String hashUser, String levelUser, String notes) {
-        TextView totalDataNotes, titleNotes;
+    private void loadDataNotes(String userName, String userKey, String hashUser, String levelUser) {
+        categoryOfNotes = "Notes";
+
+        TextView totalDataNotes, titleNotes, infoNotFoundDataNotes;
         totalDataNotes = (TextView)findViewById(R.id.txTotalDataNotes);
         titleNotes = (TextView)findViewById(R.id.txCategoryNotes);
+        infoNotFoundDataNotes = (TextView)findViewById(R.id.notFoundNotes);
 
 
         ApiServices apiServices = RetrofitClient.getInstance();
-        Call<ResponseListNotes> responseListNotesCall = apiServices.reqListNotes(userName, userKey, hashUser,levelUser, notes);
+        Call<ResponseListNotes> responseListNotesCall = apiServices.reqListNotes(userName, userKey, hashUser,levelUser, categoryOfNotes);
 
         responseListNotesCall.enqueue(new Callback<ResponseListNotes>() {
             @Override
@@ -124,16 +151,25 @@ public class DashboardActivity extends AppCompatActivity {
                     totalDataNotes.setText(response.body().getTotalnotes() + " Total Item");
                     titleNotes.setText("Kategori " + response.body().getCategory());
 
-                    boolean status = response.body().isStatus();
                     List<ListnotesItem> notesItemList = response.body().getListnotes();
+                    AdapterDashboard adapterDashboard = new AdapterDashboard(DashboardActivity.this, notesItemList);
 
-                    if (status == true) {
-                        AdapterDashboard adapterDashboard = new AdapterDashboard(DashboardActivity.this, notesItemList);
+                    int totalDataCatatan = Integer.parseInt(response.body().getTotalnotes().toString());
+
+                    if (totalDataCatatan == 0) {
+                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        infoNotFoundDataNotes.setVisibility(View.VISIBLE);
+                        infoNotFoundDataNotes.setText(response.body().getMessage());
+                        srvListNotes.setRefreshing(false);
+                        rvListNotes.setVisibility(View.GONE);
+                    } else if (totalDataCatatan >= 0) {
+                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        infoNotFoundDataNotes.setVisibility(View.GONE);
+                        rvListNotes.setVisibility(View.VISIBLE);
                         rvListNotes.setAdapter(adapterDashboard);
                         srvListNotes.setRefreshing(false);
-                    } else {
-                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
+
                 } else {
                     Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -141,18 +177,21 @@ public class DashboardActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseListNotes> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
     }
 
-    private void loadDataTask(String userName, String userKey, String hashUser, String levelUser, String task) {
-        TextView totalDataTask, titleTask;
+    private void loadDataTask(String userName, String userKey, String hashUser, String levelUser) {
+        categoryOfNotes = "Task";
+
+        TextView totalDataTask, titleTask, infoNotFoundDataTask;
         totalDataTask = (TextView)findViewById(R.id.txTotalDataTask);
         titleTask = (TextView)findViewById(R.id.txCategoryTask);
+        infoNotFoundDataTask = (TextView)findViewById(R.id.notFoundTask);
 
         ApiServices apiServices = RetrofitClient.getInstance();
-        Call<ResponseListNotes> responseListNotesCall = apiServices.reqListNotes(userName, userKey, hashUser,levelUser, task);
+        Call<ResponseListNotes> responseListNotesCall = apiServices.reqListNotes(userName, userKey, hashUser,levelUser, categoryOfNotes);
 
         responseListNotesCall.enqueue(new Callback<ResponseListNotes>() {
             @Override
@@ -162,15 +201,23 @@ public class DashboardActivity extends AppCompatActivity {
                     totalDataTask.setText(response.body().getTotalnotes() + " Total Item");
                     titleTask.setText("Kategori " + response.body().getCategory());
 
-                    boolean status = response.body().isStatus();
                     List<ListnotesItem> notesItemList = response.body().getListnotes();
+                    AdapterDashboard adapterDashboard = new AdapterDashboard(DashboardActivity.this, notesItemList);
 
-                    if (status == true) {
-                        AdapterDashboard adapterDashboard = new AdapterDashboard(DashboardActivity.this, notesItemList);
+                    int totalDataCatatan = Integer.parseInt(response.body().getTotalnotes().toString());
+
+                    if (totalDataCatatan == 0) {
+                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        infoNotFoundDataTask.setVisibility(View.VISIBLE);
+                        infoNotFoundDataTask.setText(response.body().getMessage());
+                        srvListNotes.setRefreshing(false);
+                        rvListTasks.setVisibility(View.GONE);
+                    } else if (totalDataCatatan >= 0) {
+                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        infoNotFoundDataTask.setVisibility(View.GONE);
+                        rvListTasks.setVisibility(View.VISIBLE);
                         rvListTasks.setAdapter(adapterDashboard);
                         srvListNotes.setRefreshing(false);
-                    } else {
-                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
@@ -179,7 +226,7 @@ public class DashboardActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseListNotes> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
     }

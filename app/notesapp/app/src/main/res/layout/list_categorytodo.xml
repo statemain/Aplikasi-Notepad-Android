@@ -42,6 +42,15 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/notFoundTodo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textSize="6pt"
+            android:text="Catatan To do tidak tersedia di database"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:visibility="visible"
             android:layout_marginTop="10dp"
