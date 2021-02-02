@@ -86,11 +86,11 @@ Result bisa lihat dibawah ini, semua task problem sudah clear dan solve. Silahka
 
 <img src="https://github.com/eljitech/notepadinhand/blob/master/pictures/github/Peek%202021-02-02%2014-51.gif"/>
 
-Akses kode disini <a href="https://github.com/eljitech/notepadinhand/commit/e67d17b50541fa9d17fdd73256fa88b60cf9f25f"/>
+<a href="https://github.com/eljitech/notepadinhand/commit/e67d17b50541fa9d17fdd73256fa88b60cf9f25f">Akses kode disini</a>
 
 ##### Update List filtering berdasarkan Category dan Username akses 
 
-Akses kode disini <a href="https://github.com/eljitech/notepadinhand/blob/edc3cb428fd7d24e4ed3393f1f54ee2c91db4eaa/module/list_notes.php"/>
+<a href="https://github.com/eljitech/notepadinhand/blob/edc3cb428fd7d24e4ed3393f1f54ee2c91db4eaa/module/list_notes.php">Akses kode disini</a>
 
 ### Rilis Update : Bisa di download di link berikut
 * <a href="https://github.com/eljitech/notepadinhand/releases/tag/150121.2">Pertemuan Terakhir 15 Januari 2021</a> : Update project Native API sudah dapat menampilkan output dari request yang diminta oleh client melalui Postman app. (<i>Unstable</i>)
