@@ -26,20 +26,20 @@
             $categoryof_notes = $_POST['categoryof_notes'];
 
             // Deklarasi Query SQL
-            $gettotal_notes = "SELECT COUNT(*) 'total' FROM tbl_notes WHERE categoryof_notes = '$categoryof_notes'";
+            $gettotal_notes = "SELECT COUNT(*) 'total' FROM tbl_notes JOIN tbl_user ON tbl_user.id_user=tbl_notes.id_user WHERE tbl_notes.categoryof_notes = '$categoryof_notes' AND tbl_user.username = '$username'  ORDER BY date_created ASC";
             // Eksekusi Query
             $execute_querytotalnotes = mysqli_query($_AUTH, $gettotal_notes);
             // Ambil Data yang sudah di request tadi oleh query yang barusan dijalankan
             $result_totaldatanotes = mysqli_fetch_assoc($execute_querytotalnotes);
             // mysqli_fetch_assoc ini berfungsi untuk menfetching / mengambil data secara satu persatu
 
-            $query_listnotes = "SELECT tbl_notes.id_notes, tbl_notes.titleof_notes, tbl_notes.contentof_notes, tbl_notes.date_created, tbl_notes.id_user, tbl_user.username, tbl_notes.categoryof_notes FROM tbl_notes JOIN tbl_user ON tbl_user.id_user=tbl_notes.id_user WHERE categoryof_notes = '$categoryof_notes' ORDER BY date_created ASC;";
+            $query_listnotes = "SELECT tbl_notes.id_notes, tbl_notes.titleof_notes, tbl_notes.contentof_notes, tbl_notes.date_created, tbl_notes.id_user, tbl_user.username, tbl_notes.categoryof_notes FROM tbl_notes JOIN tbl_user ON tbl_user.id_user=tbl_notes.id_user WHERE categoryof_notes = '$categoryof_notes' AND tbl_user.username = '$username'  ORDER BY date_created ASC;";
             $execute_querylistnotes = mysqli_query($_AUTH, $query_listnotes);
             
             if ($result_totaldatanotes['total'] == 0) {
                 // Informasi bagian apabila database notes tidak ditemukan
 
-                $response["message"] = trim("Data tidak ditemukan didatabase / " . $result_totaldatanotes['total'] . " data");
+                $response["message"] = trim("Data $categoryof_notes tidak ditemukan didatabase / " . $result_totaldatanotes['total'] . " data");
                 $response["code"] = 401; // Tidak ditemukan
                 $response["status"] = false;
                 $response["category"] = $categoryof_notes;
@@ -49,7 +49,7 @@
             } else {
                 // Informasi list notes yang berhasil di temukan
 
-                $response["message"] = trim("Data berhasil ditemukan didatabase / " . $result_totaldatanotes['total'] . " data");
+                $response["message"] = trim("Data $categoryof_notes berhasil ditemukan didatabase / " . $result_totaldatanotes['total'] . " data");
                 $response["code"] = 200; // Berhasil ditemukan
                 $response["status"] = true;
                 $response["category"] = $categoryof_notes;
