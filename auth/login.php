@@ -1,4 +1,5 @@
 <?php
+    // 03022021.2 : API stable with authentication
 
     include '../config/connection.php';
 
