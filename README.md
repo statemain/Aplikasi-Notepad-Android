@@ -20,4 +20,4 @@ Dibawah ini merupakan history dari pembahasan module dari project aplikasi Notep
 
 <!-- * <a href="https://github.com/eljitech/notepadinhand/releases/tag/190121.2">Stable Rilis Backend Aplikasi Notes</a> : Ready for develop with client apps. (<b>Stable Now, Download and install in your local server</b>) -->
 
-* <a href="https://github.com/eljitech/notepadinhand/releases/tag/03022021.2">Lates update bersion build 03022021.2 of Backend API, Now you can download in this version, and implement to your client apps.</a>
+* Lates update bersion build 03022021.2 of Backend API, Now you can download in this version <a href="https://github.com/eljitech/notepadinhand/releases/tag/03022021.2">HERE</a>, and implement to your client apps. 😎
