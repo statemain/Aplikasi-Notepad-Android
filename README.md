@@ -1,3 +1,4 @@
+# Hi, Selamat datang dalam Project Notepadinhand berbasis Android + Backend API (Application Programming Inteface) PHP Programming
 Dibawah ini merupakan history dari pembahasan module dari project aplikasi Notepadinhand untuk Android, dan Backend kita menggunakan PHP programming, dimana kita memanfaatkan webserver local dan mengelola data side by side menggunakan client android melalui komunikasi API (Application Programming Inteface).
 
 ## Pembahasan Module : 12 Jan s/d 2 Februari 2021
