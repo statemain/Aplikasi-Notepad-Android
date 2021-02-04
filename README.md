@@ -15,4 +15,9 @@ Dibawah ini merupakan history dari pembahasan module dari project aplikasi Notep
 * <a href="https://github.com/eljitech/notepadinhand/wiki/History-Update-Pembelajaran-s-d-PH1-:-Semester-2#01-feb-2021--update-module-list-todo-task-dan-notes-problem-solving-selesai">01 Feb 2021 : Update module list todo, task dan notes, problem solving selesai</a>
 * <a href="https://github.com/eljitech/notepadinhand/wiki/History-Update-Pembelajaran-s-d-PH1-:-Semester-2#02-feb-2021--adding-module-login-with-clear-solvecode-from-module-register">02 Feb 2021 : Adding Module Login with Clear Solvecode from Module Register</a>
 
-## Pelaksanaan PH 1 (Penilaian Harian 1)
+## Rilis Update Project
+<!-- * <a href="https://github.com/eljitech/notepadinhand/releases/tag/150121.2">Pertemuan Terakhir 15 Januari 2021</a> : Update project Native API sudah dapat menampilkan output dari request yang diminta oleh client melalui Postman app. (<i>Unstable</i>) -->
+
+<!-- * <a href="https://github.com/eljitech/notepadinhand/releases/tag/190121.2">Stable Rilis Backend Aplikasi Notes</a> : Ready for develop with client apps. (<b>Stable Now, Download and install in your local server</b>) -->
+
+* <a href="https://github.com/eljitech/notepadinhand/releases/tag/03022021.2">Lates update bersion build 03022021.2 of Backend API, Now you can download in this version, and implement to your client apps.</a>
