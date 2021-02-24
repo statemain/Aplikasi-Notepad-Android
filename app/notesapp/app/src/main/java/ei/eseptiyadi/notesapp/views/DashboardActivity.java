@@ -106,13 +106,11 @@ public class DashboardActivity extends AppCompatActivity {
                     int totalDataCatatan = Integer.parseInt(response.body().getTotalnotes().toString());
 
                     if (totalDataCatatan == 0) {
-                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         infoNotFoundDataTodo.setVisibility(View.VISIBLE);
                         infoNotFoundDataTodo.setText(response.body().getMessage());
                         srvListNotes.setRefreshing(false);
                         rvListTodo.setVisibility(View.GONE);
                     } else if (totalDataCatatan >= 0) {
-                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         infoNotFoundDataTodo.setVisibility(View.GONE);
                         rvListTodo.setVisibility(View.VISIBLE);
                         rvListTodo.setAdapter(adapterDashboard);
@@ -157,13 +155,11 @@ public class DashboardActivity extends AppCompatActivity {
                     int totalDataCatatan = Integer.parseInt(response.body().getTotalnotes().toString());
 
                     if (totalDataCatatan == 0) {
-                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         infoNotFoundDataNotes.setVisibility(View.VISIBLE);
                         infoNotFoundDataNotes.setText(response.body().getMessage());
                         srvListNotes.setRefreshing(false);
                         rvListNotes.setVisibility(View.GONE);
                     } else if (totalDataCatatan >= 0) {
-                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         infoNotFoundDataNotes.setVisibility(View.GONE);
                         rvListNotes.setVisibility(View.VISIBLE);
                         rvListNotes.setAdapter(adapterDashboard);
@@ -207,13 +203,11 @@ public class DashboardActivity extends AppCompatActivity {
                     int totalDataCatatan = Integer.parseInt(response.body().getTotalnotes().toString());
 
                     if (totalDataCatatan == 0) {
-                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         infoNotFoundDataTask.setVisibility(View.VISIBLE);
                         infoNotFoundDataTask.setText(response.body().getMessage());
                         srvListNotes.setRefreshing(false);
                         rvListTasks.setVisibility(View.GONE);
                     } else if (totalDataCatatan >= 0) {
-                        Toast.makeText(DashboardActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         infoNotFoundDataTask.setVisibility(View.GONE);
                         rvListTasks.setVisibility(View.VISIBLE);
                         rvListTasks.setAdapter(adapterDashboard);
