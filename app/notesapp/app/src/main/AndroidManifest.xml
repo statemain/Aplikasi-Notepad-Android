@@ -11,14 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Notes102">
-        <activity android:name=".auth.RegisterActivity"></activity>
-        <activity android:name=".auth.LoginActivity" />
-        <activity android:name=".views.DashboardActivity">
+        <activity
+            android:name=".views.WelcomeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".auth.LoginActivity" />
+        <activity android:name=".views.DashboardActivity">
+
         </activity>
     </application>
 
