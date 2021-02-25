@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:text="notesapp"
             android:textStyle="bold"
+            android:gravity=""
             android:textColor="#ffff"
             android:textSize="14pt"/>
 
@@ -51,7 +52,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_below="@+id/top"
                 android:id="@+id/bottom"
                 android:layout_width="match_parent"
@@ -59,7 +60,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:backgroundTint="#ffff"
+                    android:background="@drawable/background_bt"
                     android:layout_width="match_parent"
                     android:text="Sign in"
                     android:textStyle="bold"
@@ -67,7 +68,17 @@
                     android:textAllCaps="false"
                     android:textSize="12pt"
                     android:textColor="#322FEA"
-                    android:layout_height="65dp"/>
+                    android:layout_height="60dp"/>
+
+                <Button
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/bordered_bt"
+                    android:layout_width="match_parent"
+                    android:text="Signup"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="12pt"
+                    android:layout_height="60dp"/>
 
             </LinearLayout>
 
