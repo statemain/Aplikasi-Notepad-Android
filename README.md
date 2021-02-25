@@ -15,9 +15,17 @@ Dibawah ini merupakan history dari pembahasan module dari project aplikasi Notep
 * 01 Feb 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-12-Januari---2-Februari-2021#01-feb-2021--update-module-list-todo-task-dan-notes-problem-solving-selesai">Update module list todo, task dan notes, problem solving selesai</a>
 * 02 Feb 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-12-Januari---2-Februari-2021#02-feb-2021--adding-module-login-with-clear-solvecode-from-module-register">Adding Module Login with Clear Solvecode from Module Register</a>
 
+## Pembahasan Module : 22 Februari 2021 s/d PTS
+* 22 Februari 2021 : Libur karna banjir
+* 23 Februari 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS#23-februari-2021--next-bahasan-after-ph1">Next bahasan after PH1</a>
+* 24 Februari 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS#24-februari-2021--started-aplikasi-android">Started Aplikasi Android (Flowmap Design UI)</a>
+* 25 Februari 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS#25-februari-2021--integrasi-activity-welcome">Integrasi Activity Welcome</a>
+
 ## Rilis Update Project
 <!-- * <a href="https://github.com/eljitech/notepadinhand/releases/tag/150121.2">Pertemuan Terakhir 15 Januari 2021</a> : Update project Native API sudah dapat menampilkan output dari request yang diminta oleh client melalui Postman app. (<i>Unstable</i>) -->
 
 <!-- * <a href="https://github.com/eljitech/notepadinhand/releases/tag/190121.2">Stable Rilis Backend Aplikasi Notes</a> : Ready for develop with client apps. (<b>Stable Now, Download and install in your local server</b>) -->
 
 * Lates update bersion build `03022021.2` of Backend API, Now you can download in this version <a href="https://github.com/eljitech/notepadinhand/releases/tag/03022021.2">HERE</a>, and implement to your client apps. 😎
+
+### Pengiriman Tugas ke Email septiadi.imail@gmail.com
