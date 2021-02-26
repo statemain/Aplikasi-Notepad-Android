@@ -1,9 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".auth.LoginActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp">
+
+        <TextView
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="notesapp"
+            android:textStyle="bold"
+            android:textColor="#322FEA"
+            android:textSize="14pt"/>
+
+        <LinearLayout
+            android:layout_marginTop="160dp"
+            android:id="@+id/middle"
+            android:layout_below="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome Back"
+                android:textStyle="bold"
+                android:textColor="#322FEA"
+                android:textSize="25pt"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:drawableLeft="@drawable/ic_username_active"
+                android:hint="Username"
+                android:drawablePadding="15dp"
+                android:paddingLeft="8dp"
+                android:textSize="8pt"
+                android:background="@drawable/bordered_et"
+                android:textColor="#322FEA"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+
+            <EditText
+                android:drawableLeft="@drawable/ic_password_active"
+                android:drawableRight="@drawable/ic_invisible"
+                android:hint="Password"
+                android:drawablePadding="15dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textSize="8pt"
+                android:inputType="textPassword"
+                android:background="@drawable/bordered_et"
+                android:textColor="#322FEA"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+
+            <TextView
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:textColor="#322FEA"
+                android:text="Forgot password?"/>
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:background="@drawable/background_bt_dark"
+                    android:layout_width="match_parent"
+                    android:text="Sign in"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-black"
+                    android:textAllCaps="false"
+                    android:textSize="12pt"
+                    android:textColor="#FFFFFF"
+                    android:layout_height="60dp"/>
+
+                <Button
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/bordered_bt_dark"
+                    android:layout_width="match_parent"
+                    android:text="Signup"
+                    android:textAllCaps="false"
+                    android:textColor="#9A9AAB"
+                    android:textStyle="bold"
+                    android:textSize="12pt"
+                    android:layout_height="60dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

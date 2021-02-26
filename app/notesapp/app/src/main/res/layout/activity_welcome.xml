@@ -60,6 +60,7 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:onClick="gotoSignin"
                     android:background="@drawable/background_bt"
                     android:layout_width="match_parent"
                     android:text="Sign in"
