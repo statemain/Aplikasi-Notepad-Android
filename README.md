@@ -21,7 +21,7 @@ Dibawah ini merupakan history dari pembahasan module dari project aplikasi Notep
 * 24 Februari 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS#24-februari-2021--started-aplikasi-android">Started Aplikasi Android (Flowmap Design UI)</a>
 * 25 Februari 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS#25-februari-2021--integrasi-activity-welcome">Integrasi Activity Welcome</a>
 * 26 Februari 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS#26-februari-2021--integrasi-activity-login--memberikan-action-intent-pada-button-login-di-activity-welcome">Integrasi Activity Login & Memberikan Action Intent pada Button Login di Activity Welcome</a>
-* 01 Maret 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS/_edit#01-maret-2021--update-project-add-register-activity--implementation-api-register-and-save-to-database">Update project, Add register Activity & Implementation API Register and save to Database</a>
+* 01 Maret 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS#01-maret-2021--update-project-add-register-activity--implementation-api-register-and-save-to-database">Update project, Add register Activity & Implementation API Register and save to Database</a>
 
 ## Rilis Update Project
 <!-- * <a href="https://github.com/eljitech/notepadinhand/releases/tag/150121.2">Pertemuan Terakhir 15 Januari 2021</a> : Update project Native API sudah dapat menampilkan output dari request yang diminta oleh client melalui Postman app. (<i>Unstable</i>) -->
