@@ -72,6 +72,7 @@
                     android:layout_height="60dp"/>
 
                 <Button
+                    android:onClick="gotoSignup"
                     android:layout_marginTop="9dp"
                     android:background="@drawable/bordered_bt"
                     android:layout_width="match_parent"

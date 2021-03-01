@@ -9,6 +9,7 @@ import android.view.View;
 import ei.eseptiyadi.notesapp.auth.LoginActivity;
 
 import ei.eseptiyadi.notesapp.R;
+import ei.eseptiyadi.notesapp.auth.RegisterActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -20,5 +21,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
     public void gotoSignin(View view) {
         startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+    }
+
+    public void gotoSignup(View view) {
+        startActivity(new Intent(WelcomeActivity.this, RegisterActivity.class));
     }
 }
