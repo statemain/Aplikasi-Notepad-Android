@@ -1,5 +1,6 @@
 package ei.eseptiyadi.notesapp.network;
 
+import ei.eseptiyadi.notesapp.model.auth.RequestLogin;
 import ei.eseptiyadi.notesapp.model.auth.RequestRegister;
 import ei.eseptiyadi.notesapp.model.listdatanotes.ResponseListNotes;
 import retrofit2.Call;
@@ -22,6 +23,15 @@ public interface ApiServices {
     @FormUrlEncoded
     @POST("auth/register.php")
     Call<RequestRegister> reqRegisterNewUser (
+            @Field("username") String setUsername,
+            @Field("password") String setPassword,
+            @Field("hash_useraccess") String setHash,
+            @Field("level") String setLevel
+    );
+
+    @FormUrlEncoded
+    @POST("auth/login.php")
+    Call<RequestLogin> reqLoginUser (
             @Field("username") String setUsername,
             @Field("password") String setPassword,
             @Field("hash_useraccess") String setHash,

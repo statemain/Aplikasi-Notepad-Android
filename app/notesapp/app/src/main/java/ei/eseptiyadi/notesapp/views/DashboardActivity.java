@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,10 +32,25 @@ public class DashboardActivity extends AppCompatActivity {
 
     String categoryOfNotes;
 
+    String getlogUsername = "", getlogPassword = "", getlogHash = "", getlogLevel = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        Bundle getpackageLogin = getIntent().getExtras();
+
+        if (getIntent().getExtras() != null) {
+            getlogUsername = getpackageLogin.getString("dataUsername");
+            getlogPassword = getpackageLogin.getString("dataPwd");
+            getlogHash = getpackageLogin.getString("dataHash");
+            getlogLevel = getpackageLogin.getString("dataLvl");
+        } else {
+
+        }
+
+        // Log.d("Log", "Data Login User : " + getlogUsername + " " + getlogPassword + " " + getlogHash + " " + getlogLevel);
 
         rvListTasks = (RecyclerView)findViewById(R.id.rv_listtask);
         rvListTodo = (RecyclerView)findViewById(R.id.rv_listtodo);
@@ -52,10 +68,10 @@ public class DashboardActivity extends AppCompatActivity {
         rvListTodo.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rvListNotes.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        String userName = "septiadi";
-        String userKey = "!!&21adi";
-        String hashUser = "adminkantor";
-        String levelUser = "Administrator";
+        String userName = getlogUsername;
+        String userKey = getlogPassword;
+        String hashUser = getlogHash;
+        String levelUser = getlogLevel;
 
         srvListNotes.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

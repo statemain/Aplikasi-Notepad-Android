@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,16 +22,21 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
+
+    // Deklarasi
     EditText setUsername, setPassword, setConfirmPassword, setLevel;
     Button btnSignup;
     String buatHash;
     ProgressDialog pd;
+    Bundle packageNewUser = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+
+        // Instansiasi
         pd = new ProgressDialog(RegisterActivity.this);
 
         setUsername = (EditText)findViewById(R.id.edtRegUsername);
@@ -40,6 +46,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         btnSignup = (Button)findViewById(R.id.btnRegSignup);
 
+
+        // Implementasi
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,8 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void moduleRegisterNewuser(String username, String password, String level) {
 
-
-
+        // Request
         ApiServices apiServices = RetrofitClient.getInstance();
 
         if (level.equals("Administrator")) {
@@ -97,11 +104,19 @@ public class RegisterActivity extends AppCompatActivity {
             buatHash = "general";
         }
 
+        Toast.makeText(this, username + password + buatHash + "_" + username + level, Toast.LENGTH_LONG).show();
+
         Call<RequestRegister> reqRegisterCall = apiServices.reqRegisterNewUser(username, password, buatHash + "_" + username, level);
+
+        // Server ngasih Response
 
         reqRegisterCall.enqueue(new Callback<RequestRegister>() {
             @Override
             public void onResponse(Call<RequestRegister> call, Response<RequestRegister> response) {
+
+                String data = "apps";
+
+                Log.d("Log","Pesan : " + data);
 
                 if (response.isSuccessful()) {
                     pd.dismiss();
@@ -109,7 +124,14 @@ public class RegisterActivity extends AppCompatActivity {
                     int codeResponse = response.body().getCode();
 
                     if (codeResponse == 201) {
-                        Toast.makeText(RegisterActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        packageNewUser.putString("key_username", username);
+                        packageNewUser.putString("key_password", password);
+                        packageNewUser.putString("key_hash", buatHash + "_" + username);
+                        packageNewUser.putString("key_level", level);
+
+                        Intent kirimkeLogin = new Intent(RegisterActivity.this, LoginActivity.class);
+                        kirimkeLogin.putExtras(packageNewUser);
+                        startActivity(kirimkeLogin);
                     } else if (codeResponse == 405) {
                         Toast.makeText(RegisterActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
