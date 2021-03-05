@@ -27,9 +27,16 @@ Dibawah ini merupakan history dari pembahasan module dari project aplikasi Notep
 
 ## Semua Vidio Pertemuan setiap Sesinya
 
+### A. Kelas X Software Engineer
 * <a href="https://drive.google.com/drive/folders/1iv3mncS8Ng7lSAzrqj_ONdtWEgAPiItP?usp=sharing">Record Semua Pertemuan</a> Bulan Januari 2021
-* <a href="https://drive.google.com/drive/folders/1rkOw3UWOhldwwGC_P0Rz53rrhMnlvzj7?usp=sharing">Record Semua Pertemuan Bulan</a> Februari 2021
-* <a href=https://drive.google.com/drive/folders/1rkOw3UWOhldwwGC_P0Rz53rrhMnlvzj7?usp=sharing">Record Semua Pertemuan Bulan</a> Maret 2021
+* <a href="https://drive.google.com/drive/folders/1rkOw3UWOhldwwGC_P0Rz53rrhMnlvzj7?usp=sharing">Record Semua Pertemuan</a> Bulan Februari 2021
+* <a href="https://drive.google.com/drive/folders/1rkOw3UWOhldwwGC_P0Rz53rrhMnlvzj7?usp=sharing">Record Semua Pertemuan</a> Bulan Maret 2021
+
+### B. Kelas XII Software Engineer (Sedang diupload)
+* <a href="">Record Semua Pertemuan</a> Bulan Januari 2021
+* <a href="">Record Semua Pertemuan</a> Bulan Februari 2021
+* <a href="">Record Semua Pertemuan</a> Bulan Maret 2021
+
 
 ## Rilis Update Project
 <!-- * <a href="https://github.com/eljitech/notepadinhand/releases/tag/150121.2">Pertemuan Terakhir 15 Januari 2021</a> : Update project Native API sudah dapat menampilkan output dari request yang diminta oleh client melalui Postman app. (<i>Unstable</i>) -->
