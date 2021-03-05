@@ -22,6 +22,8 @@ Dibawah ini merupakan history dari pembahasan module dari project aplikasi Notep
 * 25 Februari 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS#25-februari-2021--integrasi-activity-welcome">Integrasi Activity Welcome</a>
 * 26 Februari 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS#26-februari-2021--integrasi-activity-login--memberikan-action-intent-pada-button-login-di-activity-welcome">Integrasi Activity Login & Memberikan Action Intent pada Button Login di Activity Welcome</a>
 * 01 Maret 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS#01-maret-2021--update-project-add-register-activity--implementation-api-register-and-save-to-database">Update project, Add register Activity & Implementation API Register and save to Database</a>
+* 03 Maret 2021 : Mentoring & Penjelasan Konsep Materi-materi sebelumnya
+* 04 Maret 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS#04-maret-2021--add-module-login-implementation-intent-bundle">Add module Login (Implementation Intent Bundle)</a>
 
 ## Semua Vidio Pertemuan setiap Sesinya
 
