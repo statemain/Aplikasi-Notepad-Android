@@ -1,5 +1,6 @@
 <?php
     // 03022021.2 : API stable with authentication
+    // Versi dengan parameter Hash dan Level
 
     include '../config/connection.php';
 
