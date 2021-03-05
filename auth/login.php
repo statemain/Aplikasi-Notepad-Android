@@ -1,18 +1,16 @@
 <?php
     // 03022021.2 : API stable with authentication
-    // Versi dengan parameter Hash dan Level
+    // Versi dengan hanya parameter Username & Password untuk login
 
     include '../config/connection.php';
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $cekusername = $_POST['username'];
         $cekpassword = $_POST['password'];
-        $cekhash = $_POST['hash_useraccess'];
-        $ceklevel = $_POST['level'];
 
-        $proseslogin = mysqli_query($_AUTH, "SELECT id_user, username, password, hash_useraccess, level, dateuser_created FROM tbl_user WHERE username = '$cekusername' AND password = MD5('$cekpassword') AND hash_useraccess = SHA1('$cekhash') AND level = '$ceklevel'");
+        $proseslogin = mysqli_query($_AUTH, "SELECT id_user, username, password, hash_useraccess, level, dateuser_created FROM tbl_user WHERE username = '$cekusername' AND password = MD5('$cekpassword')");
 
-        $existuser = mysqli_query($_AUTH, "SELECT COUNT(*) 'total' FROM tbl_user WHERE username = '$cekusername' AND password = MD5('$cekpassword') AND hash_useraccess = SHA1('$cekhash') AND level = '$ceklevel'");
+        $existuser = mysqli_query($_AUTH, "SELECT COUNT(*) 'total' FROM tbl_user WHERE username = '$cekusername' AND password = MD5('$cekpassword')");
         $totaldata = mysqli_fetch_assoc($existuser);
 
         if ($totaldata['total'] == 0) {
