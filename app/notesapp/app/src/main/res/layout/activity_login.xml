@@ -71,14 +71,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"/>
 
-            <TextView
-                android:paddingTop="10dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:textStyle="bold"
-                android:textColor="#322FEA"
-                android:text="Forgot password?"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:onClick="clearLogField"
+                    android:layout_weight="1"
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:textStyle="bold"
+                    android:textColor="#DCDCE1"
+                    android:text="Clear Field"/>
+
+                <TextView
+                    android:layout_weight="1"
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:textColor="#322FEA"
+                    android:text="Forgot password?"/>
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_marginTop="30dp"

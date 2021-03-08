@@ -104,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
             buatHash = "general";
         }
 
-        Toast.makeText(this, username + password + buatHash + "_" + username + level, Toast.LENGTH_LONG).show();
+        // Toast.makeText(this, username + password + buatHash + "_" + username + level, Toast.LENGTH_LONG).show();
 
         Call<RequestRegister> reqRegisterCall = apiServices.reqRegisterNewUser(username, password, buatHash + "_" + username, level);
 
@@ -114,10 +114,6 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RequestRegister> call, Response<RequestRegister> response) {
 
-                String data = "apps";
-
-                Log.d("Log","Pesan : " + data);
-
                 if (response.isSuccessful()) {
                     pd.dismiss();
 
@@ -126,8 +122,6 @@ public class RegisterActivity extends AppCompatActivity {
                     if (codeResponse == 201) {
                         packageNewUser.putString("key_username", username);
                         packageNewUser.putString("key_password", password);
-                        packageNewUser.putString("key_hash", buatHash + "_" + username);
-                        packageNewUser.putString("key_level", level);
 
                         Intent kirimkeLogin = new Intent(RegisterActivity.this, LoginActivity.class);
                         kirimkeLogin.putExtras(packageNewUser);
@@ -149,5 +143,12 @@ public class RegisterActivity extends AppCompatActivity {
     public void loginNow(View view) {
         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
         finish();
+    }
+
+    public void clearRegField(View view) {
+        setUsername.setText("");
+        setPassword.setText("");
+        setConfirmPassword.setText("");
+        setLevel.setText("");
     }
 }

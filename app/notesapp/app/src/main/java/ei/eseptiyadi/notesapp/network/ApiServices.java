@@ -33,8 +33,6 @@ public interface ApiServices {
     @POST("auth/login.php")
     Call<RequestLogin> reqLoginUser (
             @Field("username") String setUsername,
-            @Field("password") String setPassword,
-            @Field("hash_useraccess") String setHash,
-            @Field("level") String setLevel
+            @Field("password") String setPassword
     );
 }

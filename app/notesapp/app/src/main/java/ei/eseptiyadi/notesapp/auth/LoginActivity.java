@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +15,6 @@ import ei.eseptiyadi.notesapp.model.auth.RequestLogin;
 import ei.eseptiyadi.notesapp.network.ApiServices;
 import ei.eseptiyadi.notesapp.network.RetrofitClient;
 import ei.eseptiyadi.notesapp.views.DashboardActivity;
-import ei.eseptiyadi.notesapp.views.WelcomeActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Bundle kirimdataLogin = new Bundle();
 
-    String getUsername, getPassword, getLevel, getHash;
+    String getUsername, getPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,21 +36,21 @@ public class LoginActivity extends AppCompatActivity {
 
         Bundle getPackageNewUser = getIntent().getExtras();
 
-        if (getIntent().getExtras() != null) {
-            getUsername = getPackageNewUser.getString("key_username");
-            getPassword = getPackageNewUser.getString("key_password");
-            getHash = getPackageNewUser.getString("key_hash");
-            getLevel = getPackageNewUser.getString("key_level");
-        } else {
-
-        }
-
         logUsername = (EditText)findViewById(R.id.edtLogUsername);
         logPassword = (EditText)findViewById(R.id.edtLogPassword);
         btnActionLogin = (Button)findViewById(R.id.btnLogSignin);
 
-        logUsername.setText(getUsername);
-        logPassword.setText(getPassword);
+        if (getIntent().getExtras() != null) {
+            getUsername = getPackageNewUser.getString("key_username");
+            getPassword = getPackageNewUser.getString("key_password");
+
+            logUsername.setText(getUsername);
+            logPassword.setText(getPassword);
+
+
+        } else {
+            // Toast.makeText(this, "Belum ada aksi", Toast.LENGTH_SHORT).show();
+        }
 
         btnActionLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 String cekUsername, cekPassword;
                 cekUsername = logUsername.getText().toString();
                 cekPassword = logPassword.getText().toString();
-                
+
                 if (cekUsername.equals("")) {
                     logUsername.requestFocus();
                     logUsername.setError("Username anda belum diisi!");
@@ -68,19 +66,18 @@ public class LoginActivity extends AppCompatActivity {
                     logPassword.requestFocus();
                     logPassword.setError("Password anda belum diisi!");
                 } else {
-                    moudleLoginUser(cekUsername, cekPassword, getHash, getLevel);
+                    moudleLoginUser(cekUsername, cekPassword);
                     // Log.d("Log", "Data User : " + getUsername + " " + getPassword + " " + getHash + " " + getLevel);
                 }
             }
         });
 
-
     }
 
-    private void moudleLoginUser(String cekUsername, String cekPassword, String getHash, String getLevel) {
+    private void moudleLoginUser(String cekUsername, String cekPassword) {
         // Log.d("Log", "Module Login : " + cekUsername + " " + cekPassword + " " + getHash + " " + getLevel);
         ApiServices apiServices = RetrofitClient.getInstance();
-        Call<RequestLogin> requestLoginCall = apiServices.reqLoginUser(cekUsername, cekPassword, getHash, getLevel);
+        Call<RequestLogin> requestLoginCall = apiServices.reqLoginUser(cekUsername, cekPassword);
 
         requestLoginCall.enqueue(new Callback<RequestLogin>() {
             @Override
@@ -90,11 +87,19 @@ public class LoginActivity extends AppCompatActivity {
                     int codeResponse = response.body().getCode();
 
                     if (codeResponse == 200) {
+
+                        String id, username, key, hash, level;
+                        id = response.body().getId().toString();
+                        username = response.body().getUser().toString();
+                        key = response.body().getPass().toString();
+                        hash = response.body().getHash().toString();
+                        level = response.body().getLevel().toString();
+
                         // Log.d("Log", "Data Login : " + cekUsername + " " + cekPassword + " " + getHash + " " + getLevel);
-                        kirimdataLogin.putString("dataUsername", cekUsername);
-                        kirimdataLogin.putString("dataPwd", cekPassword);
-                        kirimdataLogin.putString("dataHash", getHash);
-                        kirimdataLogin.putString("dataLvl", getLevel);
+                        kirimdataLogin.putString("dataUsername", username);
+                        kirimdataLogin.putString("dataPwd", key);
+                        kirimdataLogin.putString("dataHash", hash);
+                        kirimdataLogin.putString("dataLvl", level);
 
                         Intent kirimresultLogin = new Intent(LoginActivity.this, DashboardActivity.class);
                         kirimresultLogin.putExtras(kirimdataLogin);
@@ -115,5 +120,10 @@ public class LoginActivity extends AppCompatActivity {
     public void registerNow(View view) {
         startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
 
+    }
+
+    public void clearLogField(View view) {
+        logUsername.setText("");
+        logPassword.setText("");
     }
 }

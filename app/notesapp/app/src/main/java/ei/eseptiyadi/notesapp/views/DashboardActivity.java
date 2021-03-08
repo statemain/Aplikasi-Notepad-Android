@@ -5,6 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +18,7 @@ import java.util.List;
 
 import ei.eseptiyadi.notesapp.R;
 import ei.eseptiyadi.notesapp.adapter.AdapterDashboard;
+import ei.eseptiyadi.notesapp.auth.LoginActivity;
 import ei.eseptiyadi.notesapp.model.listdatanotes.ListnotesItem;
 import ei.eseptiyadi.notesapp.model.listdatanotes.ResponseListNotes;
 import ei.eseptiyadi.notesapp.network.ApiServices;
@@ -34,10 +38,14 @@ public class DashboardActivity extends AppCompatActivity {
 
     String getlogUsername = "", getlogPassword = "", getlogHash = "", getlogLevel = "";
 
+    AlertDialog.Builder builder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        builder = new AlertDialog.Builder(this);
 
         Bundle getpackageLogin = getIntent().getExtras();
 
@@ -46,6 +54,8 @@ public class DashboardActivity extends AppCompatActivity {
             getlogPassword = getpackageLogin.getString("dataPwd");
             getlogHash = getpackageLogin.getString("dataHash");
             getlogLevel = getpackageLogin.getString("dataLvl");
+
+            getSupportActionBar().setTitle("Hi, " + getlogUsername);
         } else {
 
         }
@@ -239,5 +249,19 @@ public class DashboardActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Authentication Info")
+                .setMessage("Apakah anda ingin logout?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        DashboardActivity.super.onBackPressed();
+                    }
+                }).create().show();
     }
 }
