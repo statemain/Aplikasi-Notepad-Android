@@ -38,14 +38,11 @@ public class DashboardActivity extends AppCompatActivity {
 
     String getlogUsername = "", getlogPassword = "", getlogHash = "", getlogLevel = "";
 
-    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
-        builder = new AlertDialog.Builder(this);
 
         Bundle getpackageLogin = getIntent().getExtras();
 
