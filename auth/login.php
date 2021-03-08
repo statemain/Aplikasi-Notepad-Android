@@ -9,6 +9,8 @@
         $cekpassword = $_POST['password'];
 
         $proseslogin = mysqli_query($_AUTH, "SELECT id_user, username, password, hash_useraccess, level, dateuser_created FROM tbl_user WHERE username = '$cekusername' AND password = MD5('$cekpassword')");
+        
+        $getfieldlogin = mysqli_fetch_assoc($proseslogin);
 
         $existuser = mysqli_query($_AUTH, "SELECT COUNT(*) 'total' FROM tbl_user WHERE username = '$cekusername' AND password = MD5('$cekpassword')");
         $totaldata = mysqli_fetch_assoc($existuser);
@@ -20,25 +22,29 @@
 
             echo json_encode($response);
         } else {
-            $response["message"] = "Congratulation! Anda berhasil login atas nama " .$cekusername;
-            $response["code"] = 200;
-            $response["status"] = true;
-            $response["datauserlogin"] = array();
+
+            $passwd = $getfieldlogin['password'];
+            $hashwd = $getfieldlogin['hash_useraccess'];
+            $lvlwd = $getfieldlogin['level'];
             
-            while($row = mysqli_fetch_array($proseslogin)) {
-                $data = array();
-
-                $data['id_user'] = $row['id_user'];
-                $data['username'] = $row['username'];
-                $data['password'] = $row['password'];
-                $data['hash_useraccess'] = $row['hash_useraccess'];
-                $data['level'] = $row['level'];
-                $data['dateuser_created'] = $row['dateuser_created'];
-
-                array_push($response['datauserlogin'], $data);
+            $cek_authentikasi = mysqli_query($_AUTH, "SELECT COUNT(*) 'existuser' FROM tbl_user WHERE username = '$cekusername' AND password = '$passwd' AND hash_useraccess = '$hashwd' AND level = '$lvlwd'");
+            $requireauth = mysqli_fetch_assoc($cek_authentikasi);
+            
+            if ($requireauth['existuser'] == 0) {
+            } else {
+                $response["message"] = "Congratulation! Anda berhasil login atas nama " .$cekusername;
+                $response["code"] = 200;
+                $response["status"] = true;
+    
+                $response["id"] = $getfieldlogin['id_user'];
+                $response["user"] = $getfieldlogin['username'];
+                $response["pass"] = $getfieldlogin['password'];
+                $response["hash"] = $getfieldlogin['hash_useraccess'];
+                $response["level"] = $getfieldlogin['level'];
+                $response["created_at"] = $getfieldlogin['dateuser_created'];
+            
+                echo json_encode($response);
             }
-
-            echo json_encode($response);
         }
         
     } else {

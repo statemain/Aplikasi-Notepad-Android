@@ -15,7 +15,7 @@
 
         // Deklarasikan dulu Query dalam Variable
         // $variable = mysqli_query($_variable_authentikasi, query)
-        $querysearch_user = mysqli_query($_AUTH, "SELECT * FROM tbl_user WHERE username = '$username' AND password = MD5('$password') AND hash_useraccess = SHA1('$hash_access') AND level = '$level_user'");
+        $querysearch_user = mysqli_query($_AUTH, "SELECT * FROM tbl_user WHERE username = '$username' AND password = '$password' AND hash_useraccess = '$hash_access' AND level = '$level_user'");
 
         $response = array();
 
@@ -38,10 +38,10 @@
             $query_tambahnotes = "INSERT INTO tbl_notes (titleof_notes, contentof_notes, id_user, categoryof_notes) VALUES ('$title_note', '$content_note', $id_user_result, '$category_note')";
 
             if(mysqli_query($_AUTH, $query_tambahnotes)) {
-                $query_tampilkanlistdatanote = "SELECT * FROM tbl_notes ORDER BY id_notes ASC";
+                $query_tampilkanlistdatanote = "SELECT * FROM tbl_notes WHERE categoryof_notes = '$category_note' ORDER BY id_notes ASC";
                 $execute_viewlistdatanote = mysqli_query($_AUTH, $query_tampilkanlistdatanote);
 
-                $query_totalnotes = "SELECT COUNT(*) 'total_keseluruhan_notes' FROM tbl_notes";
+                $query_totalnotes = "SELECT COUNT(*) 'total_keseluruhan_notes' FROM tbl_notes WHERE categoryof_notes = '$category_note'";
                 $execute_totalnotes = mysqli_query($_AUTH, $query_totalnotes);
                 $get_totalnotes = mysqli_fetch_assoc($execute_totalnotes);
 
@@ -49,6 +49,7 @@
                 $response['message'] = "Data notes berhasil ditambahkan kedalam database dan list berhasil ditampilkan";
                 $response['code'] = 201;
                 $response['status'] = true;
+                $response['insert_into'] = $category_note;
                 $response['totalnotes'] = $get_totalnotes['total_keseluruhan_notes'];
                 $response['datanotes'] = array();
 

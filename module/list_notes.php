@@ -16,7 +16,7 @@
 
         // Deklarasikan dulu Query dalam Variable
         // $variable = mysqli_query($_variable_authentikasi, query)
-        $querysearch_user = mysqli_query($_AUTH, "SELECT * FROM tbl_user WHERE username = '$username' AND password = MD5('$password') AND hash_useraccess = SHA1('$hash_access') AND level = '$level_user'");
+        $querysearch_user = mysqli_query($_AUTH, "SELECT * FROM tbl_user WHERE username = '$username' AND password ='$password' AND hash_useraccess = '$hash_access' AND level = '$level_user'");
 
         $response = array();
 
