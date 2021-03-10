@@ -3,6 +3,7 @@ package ei.eseptiyadi.notesapp.network;
 import ei.eseptiyadi.notesapp.model.auth.RequestLogin;
 import ei.eseptiyadi.notesapp.model.auth.RequestRegister;
 import ei.eseptiyadi.notesapp.model.listdatanotes.ResponseListNotes;
+import ei.eseptiyadi.notesapp.model.tambahnotes.RequestTambahNotes;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -34,5 +35,17 @@ public interface ApiServices {
     Call<RequestLogin> reqLoginUser (
             @Field("username") String setUsername,
             @Field("password") String setPassword
+    );
+
+    @FormUrlEncoded
+    @POST("module/create_note.php")
+    Call<RequestTambahNotes> reqAddNotes (
+            @Field("username") String setUsername,
+            @Field("password") String setPassword,
+            @Field("hash_useraccess") String setHash,
+            @Field("level") String setLevel,
+            @Field("titleof_notes") String setTittle,
+            @Field("contentof_notes") String setContent,
+            @Field("categoryof_notes") String setCategory
     );
 }

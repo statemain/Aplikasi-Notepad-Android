@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
 import ei.eseptiyadi.notesapp.R;
@@ -38,6 +40,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     String getlogUsername = "", getlogPassword = "", getlogHash = "", getlogLevel = "";
 
+    FloatingActionButton fabTambahNotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,7 @@ public class DashboardActivity extends AppCompatActivity {
         rvListTasks = (RecyclerView)findViewById(R.id.rv_listtask);
         rvListTodo = (RecyclerView)findViewById(R.id.rv_listtodo);
         rvListNotes = (RecyclerView)findViewById(R.id.rv_listnotes);
+        fabTambahNotes = (FloatingActionButton) findViewById(R.id.fabTambah);
 
         infoNotFoundTodo = (TextView) findViewById(R.id.notFoundTodo);
 
@@ -89,6 +93,18 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
         loadNotes(userName, userKey, hashUser, levelUser);
+
+        fabTambahNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Intent pindah ke Tambah Notes Activity
+                // Mengirim Username, Password, Hash, Level ke Activity Tambah Notes
+                // Di Activity Tambah Notes ini menerima hasil intent dari activity Login
+                // bisa digunakan ketika menmabahkan data
+
+                startActivity(new Intent(DashboardActivity.this, TambahNotesActivity.class));
+            }
+        });
 
     }
 
