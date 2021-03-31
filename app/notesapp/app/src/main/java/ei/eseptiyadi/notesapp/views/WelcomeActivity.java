@@ -12,7 +12,7 @@ import ei.eseptiyadi.notesapp.R;
 import ei.eseptiyadi.notesapp.auth.RegisterActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
-
+ 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

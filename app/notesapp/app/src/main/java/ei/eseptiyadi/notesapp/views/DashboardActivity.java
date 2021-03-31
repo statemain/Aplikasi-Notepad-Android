@@ -38,9 +38,11 @@ public class DashboardActivity extends AppCompatActivity {
 
     String categoryOfNotes;
 
-    String getlogUsername = "", getlogPassword = "", getlogHash = "", getlogLevel = "";
+    String getlogUsername = "", getlogPassword = "", getlogHash = "", getlogLevel = "", infoAdd = "New";
 
     FloatingActionButton fabTambahNotes;
+
+    Bundle kirimdataLogin = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,20 +81,15 @@ public class DashboardActivity extends AppCompatActivity {
         rvListTodo.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rvListNotes.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        String userName = getlogUsername;
-        String userKey = getlogPassword;
-        String hashUser = getlogHash;
-        String levelUser = getlogLevel;
-
         srvListNotes.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 // Meload ketika swipe refresh di laksanakan
-                updateList(userName, userKey, hashUser, levelUser);
+                updateList(getlogUsername, getlogPassword, getlogHash, getlogLevel);
             }
         });
 
-        loadNotes(userName, userKey, hashUser, levelUser);
+        loadNotes(getlogUsername, getlogPassword, getlogHash, getlogLevel);
 
         fabTambahNotes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +99,16 @@ public class DashboardActivity extends AppCompatActivity {
                 // Di Activity Tambah Notes ini menerima hasil intent dari activity Login
                 // bisa digunakan ketika menmabahkan data
 
-                startActivity(new Intent(DashboardActivity.this, TambahNotesActivity.class));
+                kirimdataLogin.putString("USR", getlogUsername);
+                kirimdataLogin.putString("PWD", getlogPassword);
+                kirimdataLogin.putString("HASH", getlogHash);
+                kirimdataLogin.putString("LVL", getlogLevel);
+                kirimdataLogin.putString("INFO", infoAdd);
+
+                Intent kirimdatakeTambahNote = new Intent(DashboardActivity.this, TambahNotesActivity.class);
+                kirimdatakeTambahNote.putExtras(kirimdataLogin);
+                startActivity(kirimdatakeTambahNote);
+
             }
         });
 
@@ -276,5 +282,11 @@ public class DashboardActivity extends AppCompatActivity {
                         DashboardActivity.super.onBackPressed();
                     }
                 }).create().show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadNotes(getlogUsername, getlogPassword, getlogHash, getlogLevel);
     }
 }

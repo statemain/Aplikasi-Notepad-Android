@@ -11,51 +11,62 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="false">
 
         <EditText
+            android:drawablePadding="15dp"
+            android:drawableLeft="@drawable/ic_add"
+            android:background="@drawable/bordered_et"
+            android:id="@+id/edtAddIdNotes"
+            android:textSize="7pt"
+            android:hint="Id Notes"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
+
+        <EditText
+            android:drawablePadding="15dp"
+            android:drawableLeft="@drawable/ic_add"
+            android:background="@drawable/bordered_et"
             android:id="@+id/edtAddTittleNotes"
-            android:textSize="6pt"
+            android:textSize="7pt"
             android:hint="Set Tittle of Notes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="45dp"/>
 
         <EditText
+            android:drawablePadding="15dp"
+            android:drawableLeft="@drawable/ic_content"
+            android:background="@drawable/bordered_et"
             android:id="@+id/edtAddContentNotes"
-            android:textSize="6pt"
+            android:textSize="7pt"
             android:hint="Content of notes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="45dp"/>
 
         <EditText
+            android:drawableLeft="@drawable/ic_category"
+            android:drawablePadding="15dp"
+            android:background="@drawable/bordered_et"
             android:maxLines="4"
             android:id="@+id/edtAddCategoryNotes"
-            android:textSize="6pt"
-            android:hint="Choose Category Ex: Notes, Task or To do"
+            android:textSize="7pt"
+            android:hint="Ex: Notes, Task or To do"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="45dp"/>
 
         <LinearLayout
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
+                android:background="@drawable/background_bt_custome"
                 android:onClick="simpanNotes"
-                android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Simpan Notes" />
-
-            <Button
-                android:onClick="cancelAddNotes"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#FF5722"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cancel" />
+                android:text="Tambah Note" />
 
         </LinearLayout>
 

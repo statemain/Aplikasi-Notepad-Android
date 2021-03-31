@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    public static final String BASE_URL = "http://192.168.2.37/backends/notepadinhand/";
+    public static final String BASE_URL = "http://192.168.2.37/backends/notepad/";
 
     public static Retrofit setInit(){
         return new Retrofit.Builder()

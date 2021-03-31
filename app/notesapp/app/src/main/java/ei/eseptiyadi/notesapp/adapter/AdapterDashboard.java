@@ -1,6 +1,8 @@
 package ei.eseptiyadi.notesapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,9 @@ import java.util.List;
 
 import ei.eseptiyadi.notesapp.R;
 import ei.eseptiyadi.notesapp.model.listdatanotes.ListnotesItem;
+import ei.eseptiyadi.notesapp.views.DashboardActivity;
+import ei.eseptiyadi.notesapp.views.TambahNotesActivity;
+
 // Buat Extend
 // Alt + Enter
 public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.MyViewHolder> {
@@ -56,6 +61,15 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.MyVi
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Item yang dipilih adalah " + listnotesItems.get(position).getTitleofNotes(), Toast.LENGTH_LONG).show();
+
+                String infoEdit = "Edit";
+
+                Intent edit = new Intent(context, TambahNotesActivity.class);
+
+                edit.putExtra("INFO", infoEdit);
+
+                context.startActivity(edit);
+
             }
         });
     }
