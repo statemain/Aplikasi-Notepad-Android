@@ -57,6 +57,8 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.MyVi
             holder.picNotes.setImageResource(R.drawable.icn_todo);
         }
 
+        Bundle packageDataEdit = new Bundle();
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,9 +66,16 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.MyVi
 
                 String infoEdit = "Edit";
 
+                packageDataEdit.putString("ID_NOTES", listnotesItems.get(position).getIdNotes());
+                packageDataEdit.putString("TITTLE_NOTES", listnotesItems.get(position).getTitleofNotes());
+                packageDataEdit.putString("CONTENT_NOTES", listnotesItems.get(position).getContentofNotes());
+                packageDataEdit.putString("CAT_NOTES", listnotesItems.get(position).getCategoryofNotes());
+                packageDataEdit.putString("DATE_CREATED", listnotesItems.get(position).getDateCreated());
+                packageDataEdit.putString("INFO", infoEdit);
+
                 Intent edit = new Intent(context, TambahNotesActivity.class);
 
-                edit.putExtra("INFO", infoEdit);
+                edit.putExtras(packageDataEdit);
 
                 context.startActivity(edit);
 

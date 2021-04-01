@@ -54,6 +54,15 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"/>
 
+        <TextView
+            android:id="@+id/txDeateCreaetd"
+            android:drawableLeft="@drawable/ic_datecreate"
+            android:drawablePadding="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tanggal"/>
+
         <LinearLayout
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
@@ -61,10 +70,11 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btnTambahNotes"
                 android:background="@drawable/background_bt_custome"
-                android:onClick="simpanNotes"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
+                android:textColor="#FFFCFC"
                 android:layout_height="wrap_content"
                 android:text="Tambah Note" />
 
