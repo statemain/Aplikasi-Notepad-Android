@@ -25,6 +25,15 @@ Dibawah ini merupakan history dari pembahasan module dari project aplikasi Notep
 * 03 Maret 2021 : Mentoring & Penjelasan Konsep Materi-materi sebelumnya
 * 04 Maret 2021 : <a href="https://github.com/eljitech/notepadinhand/wiki/History-22-Februari-2021-s-d-PTS#04-maret-2021--add-module-login-implementation-intent-bundle">Add module Login (Implementation Intent Bundle)</a>
 
+## Pembahasan Module : 05 Maret 2021 s/d PAS
+* 08 Maret 2021 : 
+* 30 Maret 2021 : 
+
+
+## Update Last Module
+
+<img src="https://github.com/eljitech/notepad/blob/master/pictures/capture/Peek%202021-04-08%2009-37.gif"/>
+
 ## Rilis Update Project
 <!-- * <a href="https://github.com/eljitech/notepadinhand/releases/tag/150121.2">Pertemuan Terakhir 15 Januari 2021</a> : Update project Native API sudah dapat menampilkan output dari request yang diminta oleh client melalui Postman app. (<i>Unstable</i>) -->
 
