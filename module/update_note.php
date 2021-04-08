@@ -15,7 +15,8 @@
 
         // Deklarasikan dulu Query dalam Variable
         // $variable = mysqli_query($_variable_authentikasi, query)
-        $querysearch_user = mysqli_query($_AUTH, "SELECT * FROM tbl_user WHERE username = '$username' AND password = MD5('$password') AND hash_useraccess = SHA1('$hash_access') AND level = '$level_user'");
+        $querysearch_user = mysqli_query($_AUTH, "SELECT * FROM tbl_user WHERE username = '$username' AND password = '$password' AND hash_useraccess = '$hash_access' AND level = '$level_user'");
+        // Apabila pake SH1 dan MD5 apakah bisa update ? catatan
 
         $response = array();
 
@@ -37,7 +38,7 @@
             $set_category = $_POST['categoryof_notes'];
 
             $query_updatenote = "UPDATE tbl_notes
-            SET titleof_notes = '$set_title', contentof_notes = '$set_konten', id_user = $id_user_result, categoryof_notes = '$set_category'
+            SET titleof_notes = '$set_title', contentof_notes = '$set_konten', id_user = $id_user_result, categoryof_notes = '$set_category' 
             WHERE id_notes = $get_idnotes";
             $execute_updatenote = mysqli_query($_AUTH, $query_updatenote);
 

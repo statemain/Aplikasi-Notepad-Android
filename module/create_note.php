@@ -38,7 +38,7 @@
             $query_tambahnotes = "INSERT INTO tbl_notes (titleof_notes, contentof_notes, id_user, categoryof_notes) VALUES ('$title_note', '$content_note', $id_user_result, '$category_note')";
 
             if(mysqli_query($_AUTH, $query_tambahnotes)) {
-                $query_tampilkanlistdatanote = "SELECT * FROM tbl_notes WHERE categoryof_notes = '$category_note' ORDER BY id_notes ASC";
+                $query_tampilkanlistdatanote = "SELECT * FROM tbl_notes JOIN tbl_user ON tbl_user.id_user=tbl_notes.id_user WHERE tbl_notes.categoryof_notes = '$category_note' AND tbl_user.username = '$username' ORDER BY tbl_notes.id_notes ASC";
                 $execute_viewlistdatanote = mysqli_query($_AUTH, $query_tampilkanlistdatanote);
 
                 $query_totalnotes = "SELECT COUNT(*) 'total_keseluruhan_notes' FROM tbl_notes WHERE categoryof_notes = '$category_note'";

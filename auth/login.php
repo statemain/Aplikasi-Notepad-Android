@@ -24,10 +24,8 @@
         } else {
 
             $passwd = $getfieldlogin['password'];
-            $hashwd = $getfieldlogin['hash_useraccess'];
-            $lvlwd = $getfieldlogin['level'];
             
-            $cek_authentikasi = mysqli_query($_AUTH, "SELECT COUNT(*) 'existuser' FROM tbl_user WHERE username = '$cekusername' AND password = '$passwd' AND hash_useraccess = '$hashwd' AND level = '$lvlwd'");
+            $cek_authentikasi = mysqli_query($_AUTH, "SELECT COUNT(*) 'existuser' FROM tbl_user WHERE username = '$cekusername' AND password = '$passwd'");
             $requireauth = mysqli_fetch_assoc($cek_authentikasi);
             
             if ($requireauth['existuser'] == 0) {
