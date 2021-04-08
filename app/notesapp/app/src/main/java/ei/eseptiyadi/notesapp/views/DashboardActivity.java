@@ -25,6 +25,7 @@ import ei.eseptiyadi.notesapp.model.listdatanotes.ListnotesItem;
 import ei.eseptiyadi.notesapp.model.listdatanotes.ResponseListNotes;
 import ei.eseptiyadi.notesapp.network.ApiServices;
 import ei.eseptiyadi.notesapp.network.RetrofitClient;
+import ei.eseptiyadi.notesapp.preferences.Session;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,9 +39,11 @@ public class DashboardActivity extends AppCompatActivity {
 
     String categoryOfNotes;
 
-    String getlogUsername = "", getlogPassword = "", getlogHash = "", getlogLevel = "", infoAdd = "New";
+    String infoAdd = "New";
 
     FloatingActionButton fabTambahNotes;
+
+    String usrnm, paskey, hashusr, lvlusr;
 
     Bundle kirimdataLogin = new Bundle();
 
@@ -48,19 +51,6 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
-        Bundle getpackageLogin = getIntent().getExtras();
-
-        if (getIntent().getExtras() != null) {
-            getlogUsername = getpackageLogin.getString("dataUsername");
-            getlogPassword = getpackageLogin.getString("dataPwd");
-            getlogHash = getpackageLogin.getString("dataHash");
-            getlogLevel = getpackageLogin.getString("dataLvl");
-
-            getSupportActionBar().setTitle("Hi, " + getlogUsername);
-        } else {
-
-        }
 
         // Log.d("Log", "Data Login User : " + getlogUsername + " " + getlogPassword + " " + getlogHash + " " + getlogLevel);
 
@@ -81,15 +71,24 @@ public class DashboardActivity extends AppCompatActivity {
         rvListTodo.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rvListNotes.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        usrnm = Session.getRegisesi_User(getBaseContext());
+        paskey = Session.getRegisesi_Pass(getBaseContext());
+        hashusr = Session.getRegisesi_Hash(getBaseContext());
+        lvlusr = Session.getRegisesi_Lvl(getBaseContext());
+
+        getSupportActionBar().setTitle("Hi, " + usrnm);
+
+         //Log.d("Log", "MSG : " + usrnm + " " + paskey + " " + hashusr + " " + lvlusr);
+
         srvListNotes.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 // Meload ketika swipe refresh di laksanakan
-                updateList(getlogUsername, getlogPassword, getlogHash, getlogLevel);
+                updateList(usrnm, paskey, hashusr, lvlusr);
             }
         });
 
-        loadNotes(getlogUsername, getlogPassword, getlogHash, getlogLevel);
+        loadNotes(usrnm, paskey, hashusr, lvlusr);
 
         fabTambahNotes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,11 +97,6 @@ public class DashboardActivity extends AppCompatActivity {
                 // Mengirim Username, Password, Hash, Level ke Activity Tambah Notes
                 // Di Activity Tambah Notes ini menerima hasil intent dari activity Login
                 // bisa digunakan ketika menmabahkan data
-
-                kirimdataLogin.putString("USR", getlogUsername);
-                kirimdataLogin.putString("PWD", getlogPassword);
-                kirimdataLogin.putString("HASH", getlogHash);
-                kirimdataLogin.putString("LVL", getlogLevel);
                 kirimdataLogin.putString("INFO", infoAdd);
 
                 Intent kirimdatakeTambahNote = new Intent(DashboardActivity.this, TambahNotesActivity.class);
@@ -287,6 +281,6 @@ public class DashboardActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loadNotes(getlogUsername, getlogPassword, getlogHash, getlogLevel);
+        loadNotes(usrnm, paskey, hashusr, lvlusr);
     }
 }

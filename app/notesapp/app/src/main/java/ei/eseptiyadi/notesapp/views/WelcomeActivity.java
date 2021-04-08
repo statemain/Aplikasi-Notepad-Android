@@ -10,6 +10,7 @@ import ei.eseptiyadi.notesapp.auth.LoginActivity;
 
 import ei.eseptiyadi.notesapp.R;
 import ei.eseptiyadi.notesapp.auth.RegisterActivity;
+import ei.eseptiyadi.notesapp.preferences.Session;
 
 public class WelcomeActivity extends AppCompatActivity {
  
@@ -17,6 +18,15 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (Session.getStatus_Userlog(getBaseContext())) {
+            startActivity(new Intent(getBaseContext(), DashboardActivity.class));
+            finish();
+        }
     }
 
     public void gotoSignin(View view) {

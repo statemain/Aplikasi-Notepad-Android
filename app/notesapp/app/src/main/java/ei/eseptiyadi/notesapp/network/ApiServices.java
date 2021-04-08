@@ -2,8 +2,10 @@ package ei.eseptiyadi.notesapp.network;
 
 import ei.eseptiyadi.notesapp.model.auth.RequestLogin;
 import ei.eseptiyadi.notesapp.model.auth.RequestRegister;
+import ei.eseptiyadi.notesapp.model.delete.RequestDelete;
 import ei.eseptiyadi.notesapp.model.listdatanotes.ResponseListNotes;
 import ei.eseptiyadi.notesapp.model.tambahnotes.RequestTambahNotes;
+import ei.eseptiyadi.notesapp.model.update.RequestUpdate;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -47,5 +49,28 @@ public interface ApiServices {
             @Field("titleof_notes") String setTittle,
             @Field("contentof_notes") String setContent,
             @Field("categoryof_notes") String setCategory
+    );
+
+    @FormUrlEncoded
+    @POST("module/update_note.php")
+    Call<RequestUpdate> reqUpdateNotes (
+            @Field("username") String setUsername,
+            @Field("password") String setPassword,
+            @Field("hash_useraccess") String setHash,
+            @Field("level") String setLevel,
+            @Field("id_notes") String setId,
+            @Field("titleof_notes") String setTittle,
+            @Field("contentof_notes") String setContent,
+            @Field("categoryof_notes") String setCategory
+    );
+
+    @FormUrlEncoded
+    @POST("module/delete_note.php")
+    Call<RequestDelete> reqDeleteNotes (
+            @Field("username") String setUsername,
+            @Field("password") String setPassword,
+            @Field("hash_useraccess") String setHash,
+            @Field("level") String setLevel,
+            @Field("id_notes") String setId
     );
 }

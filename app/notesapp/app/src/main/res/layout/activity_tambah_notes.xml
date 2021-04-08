@@ -67,16 +67,27 @@
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <Button
+                android:textAllCaps="false"
                 android:id="@+id/btnTambahNotes"
-                android:background="@drawable/background_bt_custome"
+                android:backgroundTint="#9C27B0"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:textColor="#FFFCFC"
-                android:layout_height="wrap_content"
+                android:layout_height="68dp"
                 android:text="Tambah Note" />
+
+            <Button
+                android:textAllCaps="false"
+                android:id="@+id/btnDelete"
+                android:backgroundTint="#F6F3F3"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:textColor="#FF0505"
+                android:layout_height="68dp"
+                android:text="Delete Note" />
 
         </LinearLayout>
 

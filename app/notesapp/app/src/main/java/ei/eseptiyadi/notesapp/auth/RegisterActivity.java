@@ -22,19 +22,18 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-
     // Deklarasi
     EditText setUsername, setPassword, setConfirmPassword, setLevel;
     Button btnSignup;
     String buatHash;
     ProgressDialog pd;
+
     Bundle packageNewUser = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
 
         // Instansiasi
         pd = new ProgressDialog(RegisterActivity.this);
@@ -45,7 +44,6 @@ public class RegisterActivity extends AppCompatActivity {
         setLevel = (EditText)findViewById(R.id.edtRegLevel);
 
         btnSignup = (Button)findViewById(R.id.btnRegSignup);
-
 
         // Implementasi
         btnSignup.setOnClickListener(new View.OnClickListener() {

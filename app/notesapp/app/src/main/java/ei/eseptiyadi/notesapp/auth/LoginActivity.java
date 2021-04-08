@@ -5,15 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.prefs.Preferences;
+
 import ei.eseptiyadi.notesapp.R;
 import ei.eseptiyadi.notesapp.model.auth.RequestLogin;
 import ei.eseptiyadi.notesapp.network.ApiServices;
 import ei.eseptiyadi.notesapp.network.RetrofitClient;
+import ei.eseptiyadi.notesapp.preferences.Session;
 import ei.eseptiyadi.notesapp.views.DashboardActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,8 +29,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText logUsername, logPassword;
     Button btnActionLogin;
     ProgressDialog pd;
-
-    Bundle kirimdataLogin = new Bundle();
 
     String getUsername, getPassword;
 
@@ -66,12 +69,22 @@ public class LoginActivity extends AppCompatActivity {
                     logPassword.requestFocus();
                     logPassword.setError("Password anda belum diisi!");
                 } else {
+
                     moudleLoginUser(cekUsername, cekPassword);
                     // Log.d("Log", "Data User : " + getUsername + " " + getPassword + " " + getHash + " " + getLevel);
                 }
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (Session.getStatus_Userlog(getBaseContext())) {
+            startActivity(new Intent(getBaseContext(), DashboardActivity.class));
+            finish();
+        }
     }
 
     private void moudleLoginUser(String cekUsername, String cekPassword) {
@@ -95,15 +108,16 @@ public class LoginActivity extends AppCompatActivity {
                         hash = response.body().getHash().toString();
                         level = response.body().getLevel().toString();
 
-                        // Log.d("Log", "Data Login : " + cekUsername + " " + cekPassword + " " + getHash + " " + getLevel);
-                        kirimdataLogin.putString("dataUsername", username);
-                        kirimdataLogin.putString("dataPwd", key);
-                        kirimdataLogin.putString("dataHash", hash);
-                        kirimdataLogin.putString("dataLvl", level);
+                        Session.setRegisesi_User(getBaseContext(), username);
+                        Session.setRegisesi_Pass(getBaseContext(), key);
+                        Session.setRegisesi_Hash(getBaseContext(), hash);
+                        Session.setRegisesi_Lvl(getBaseContext(), level);
 
-                        Intent kirimresultLogin = new Intent(LoginActivity.this, DashboardActivity.class);
-                        kirimresultLogin.putExtras(kirimdataLogin);
-                        startActivity(kirimresultLogin);
+                        setSaveSession();
+//
+//                        Intent kirimresultLogin = new Intent(LoginActivity.this, DashboardActivity.class);
+//                        startActivity(kirimresultLogin);
+                        Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     } else if (codeResponse == 404) {
                         Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -125,5 +139,12 @@ public class LoginActivity extends AppCompatActivity {
     public void clearLogField(View view) {
         logUsername.setText("");
         logPassword.setText("");
+    }
+
+    private void setSaveSession() {
+        Session.setIdentify_Userlog(getBaseContext(), Session.getRegisesi_User(getBaseContext()));
+        Session.setStatus_Userlog(getBaseContext(), true);
+        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+        finish();
     }
 }
